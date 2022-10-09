@@ -1,14 +1,88 @@
 import React from "react";
 import PostHome from "./components/PostHome";
 
-const Home = () => {
+const Home = ({ posts }) => {
   return (
     <div class="col-lg-8">
-      <PostHome />
-      <PostHome />
-      <PostHome />
-      <PostHome />
-      <PostHome />
+      <div class="card">
+        <div class="card-body">
+          <div class="jumbotron">
+            <h1 class="display-4">Welcome to my Blog!</h1>
+            <p class="lead">
+              এখানে আমি মূলত আমার আইডিয়ার নোট গুলো লিপিবদ্ধ করে রাখব।
+            </p>
+            <hr class="my-4" />
+            <p>আরো ডিটেলস এর জন্য নিচের ভিডিও টি দেখতে পারেন</p>
+            <p class="lead">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#exampleModalCenter"
+              >
+                Watch Video
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div
+        class="modal fade bd-example-modal-lg"
+        id="exampleModalCenter"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true"
+      >
+        <div
+          class="modal-dialog modal-dialog-centered modal-lg "
+          role="document"
+        >
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">
+                Modal title
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <iframe
+                width="100%"
+                height="315"
+                src="https://www.youtube.com/embed/eIUFkD0PuD8"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {posts.map((post) => {
+        return <PostHome post={post} />;
+      })}
       <nav aria-label="Page navigation example">
         <ul class="pagination">
           <li class="page-item">

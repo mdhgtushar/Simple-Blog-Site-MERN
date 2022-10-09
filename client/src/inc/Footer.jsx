@@ -65,10 +65,13 @@ const Footer = () => {
           <div class="col-lg-3 mt-3">
             <figure>
               <blockquote class="blockquote">
-                <p>A well-known quote, contained in a blockquote element.</p>
+                <p>
+                  আমার দেখা সকল সমস্যারই একটি সমাধান রয়েছে আমাকে শুধু সমাধান টা
+                  বের করতে হবে
+                </p>
               </blockquote>
               <figcaption class="blockquote-footer">
-                Someone famous in <cite title="Source Title">Source Title</cite>
+                admin <cite title="Source Title"> হোবায়ের গোলন্দাজ তুষার</cite>
               </figcaption>
             </figure>
           </div>

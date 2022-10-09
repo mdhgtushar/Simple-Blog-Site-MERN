@@ -1,8 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Post from "../components/Post";
-import PostHome from "../components/PostHome";
 
-const Sidebar = () => {
+const Sidebar = ({ categories, posts }) => {
   return (
     <div class="col-lg-4">
       <form class="mb-2">
@@ -27,10 +27,9 @@ const Sidebar = () => {
       >
         ফিচার্ড পোস্ট
       </li>
-      <Post />
-      <Post />
-      <Post />
-      <Post />
+      {posts.map((post, key) => {
+        return <Post post={post} />;
+      })}
       <ul class="list-group mb-2">
         <li
           type="button"
@@ -39,18 +38,16 @@ const Sidebar = () => {
         >
           ক্যাটাগরি
         </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          A list item
-          <span class="badge bg-primary rounded-pill">14</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          A second list item
-          <span class="badge bg-primary rounded-pill">2</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          A third list item
-          <span class="badge bg-primary rounded-pill">1</span>
-        </li>
+        {categories.map((category, key) => {
+          return (
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <Link to={`/category/${category.name}`}>{category.name} </Link>
+              <span class="badge bg-primary rounded-pill">
+                {category.numberOfPosts}
+              </span>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ categories }) => {
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2 border border-top-0 border-start-0 border-end-0">
       <div class="container">
         <Link class="navbar-brand" to="/">
-          TrickBD
+          Hobayer Blog
         </Link>
         <button
           class="navbar-toggler"
@@ -27,35 +27,35 @@ const Header = () => {
               </Link>
             </li>
             <li class="nav-item dropdown">
-              <a
+              <Link
                 class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
                 aria-expanded="false"
               >
                 Categories
-              </a>
+              </Link>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a class="dropdown-item" href="#">
-                    Action
-                  </a>
+                  <Link to={`/categories`} class="dropdown-item">
+                    All Category
+                  </Link>
                 </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
+                <div class="dropdown-divider"></div>
+                {categories.map((category, key) => {
+                  return (
+                    <li>
+                      <Link
+                        to={`/category/${category.name}`}
+                        class="dropdown-item"
+                      >
+                        {category.name}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </li>
           </ul>
@@ -70,6 +70,7 @@ const Header = () => {
               Search
             </button>
           </form>
+          <button class="btn">En</button>
         </div>
       </div>
     </nav>
