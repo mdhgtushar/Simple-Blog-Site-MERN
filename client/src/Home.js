@@ -8,9 +8,7 @@ const Home = ({ posts }) => {
         <div class="card-body">
           <div class="jumbotron">
             <h1 class="display-4">Welcome to my Blog!</h1>
-            <p class="lead">
-              এখানে আমি মূলত আমার আইডিয়ার নোট গুলো লিপিবদ্ধ করে রাখব।
-            </p>
+            <p class="lead">এখানে আমার আইডিয়ার নোট গুলো লিপিবদ্ধ করে রাখব।</p>
             <hr class="my-4" />
             <p>আরো ডিটেলস এর জন্য নিচের ভিডিও টি দেখতে পারেন</p>
             <p class="lead">
