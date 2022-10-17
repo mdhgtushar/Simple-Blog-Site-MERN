@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import PostHome from "./components/PostHome";
+import { getAllPost, getPostFromServer } from "./features/postSlice";
 
-const Home = ({ posts }) => {
+const Home = () => {
+  const posts = useSelector(getAllPost);
+  console.log(posts, "post");
   return (
     <div class="col-lg-8">
       <div class="card">
@@ -79,7 +83,7 @@ const Home = ({ posts }) => {
         </div>
       </div>
       {posts.map((post) => {
-        return <PostHome post={post} />;
+        return <PostHome post={post} key={post.id} />;
       })}
       <nav aria-label="Page navigation example">
         <ul class="pagination">

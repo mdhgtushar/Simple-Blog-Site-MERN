@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { getAllPost } from "./features/postSlice";
 
-const Post = ({ posts }) => {
+const Post = () => {
+  const posts = useSelector(getAllPost);
   const params = useParams();
   const [post, setPost] = useState([]);
+
   useEffect(() => {
     setPost(posts[params.id - 1]);
   }, [params.id, posts]);

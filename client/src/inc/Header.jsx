@@ -1,12 +1,14 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-const Header = ({ categories }) => {
+const Header = () => {
+  const categories = useSelector((state) => state.category.categories);
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2 border border-top-0 border-start-0 border-end-0">
       <div class="container">
         <Link class="navbar-brand" to="/">
-          Hobayer Blog
+          হোবায়ের ব্লগ
         </Link>
         <button
           class="navbar-toggler"
@@ -23,7 +25,7 @@ const Header = ({ categories }) => {
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <Link class="nav-link active" aria-current="page" to="/">
-                Home
+                প্রথম পাতা
               </Link>
             </li>
             <li class="nav-item dropdown">
@@ -35,12 +37,12 @@ const Header = ({ categories }) => {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Categories
+                ক্যাটাগরি
               </Link>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
                   <Link to={`/categories`} class="dropdown-item">
-                    All Category
+                    সব দেখুন
                   </Link>
                 </li>
                 <div class="dropdown-divider"></div>
@@ -50,6 +52,7 @@ const Header = ({ categories }) => {
                       <Link
                         to={`/category/${category.name}`}
                         class="dropdown-item"
+                        key={key}
                       >
                         {category.name}
                       </Link>

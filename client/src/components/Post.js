@@ -29,9 +29,9 @@ const Post = ({ post }) => {
                   <div
                     class="badge bg-primary text-wrap"
                     style={{ marginRight: "5px" }}
+                    key={category}
                   >
-                    {" "}
-                    {category}{" "}
+                    {category}
                   </div>
                 );
               })}
