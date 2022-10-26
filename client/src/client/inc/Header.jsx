@@ -1,9 +1,17 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ApiReq from "../../api/ApiReq";
 
 const Header = () => {
-  const categories = useSelector((state) => state.category.categories);
+  const [categories, setCategories] = useState([]);
+
+  const getCategories = async () => {
+    const data = await ApiReq.get("category");
+    setCategories(data.data);
+  };
+  useEffect(() => {
+    getCategories();
+  }, []);
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2 border border-top-0 border-start-0 border-end-0">
       <div class="container">
@@ -50,11 +58,11 @@ const Header = () => {
                   return (
                     <li>
                       <Link
-                        to={`/category/${category.name}`}
+                        to={`/category/${category.category_name}`}
                         class="dropdown-item"
                         key={key}
                       >
-                        {category.name}
+                        {category.category_name}
                       </Link>
                     </li>
                   );

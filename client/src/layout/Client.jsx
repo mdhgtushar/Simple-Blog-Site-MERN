@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
-import Footer from "../inc/Footer";
-import Header from "../inc/Header";
-import Sidebar from "../inc/Sidebar";
+import Footer from "../client/inc/Footer";
+import Header from "../client/inc/Header";
+import Sidebar from "../client/inc/Sidebar";
 
 const Client = () => {
   return (

@@ -1,31 +1,38 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import ApiReq from "../api/ApiReq";
 import PostHome from "./components/PostHome";
-import { getAllPost, getPostFromServer } from "./features/postSlice";
 
 const Home = () => {
-  const posts = useSelector(getAllPost);
-  console.log(posts, "post");
+  const [posts, setPosts] = useState([]);
+
+  const getPosts = async () => {
+    const data = await ApiReq.get("/posts");
+    setPosts(data.data);
+  };
+
+  useEffect(() => {
+    getPosts();
+  }, []);
+  console.log(posts);
+
   return (
     <div class="col-lg-8">
       <div class="card">
         <div class="card-body">
-          <div class="jumbotron">
-            <h1 class="display-4">Welcome to my Blog!</h1>
-            <p class="lead">এখানে আমার আইডিয়ার নোট গুলো লিপিবদ্ধ করে রাখব।</p>
-            <hr class="my-4" />
-            <p>আরো ডিটেলস এর জন্য নিচের ভিডিও টি দেখতে পারেন</p>
-            <p class="lead">
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-toggle="modal"
-                data-target="#exampleModalCenter"
-              >
-                Watch Video
-              </button>
-            </p>
-          </div>
+          <h1 class="display-4">Welcome to my Blog!</h1>
+          <p class="lead">এখানে আমার আইডিয়ার নোট গুলো লিপিবদ্ধ করে রাখব।</p>
+          <hr class="my-4" />
+          <p>আরো ডিটেলস এর জন্য নিচের ভিডিও টি দেখতে পারেন</p>
+          <p class="lead">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target="#exampleModalCenter"
+            >
+              Watch Video
+            </button>
+          </p>
         </div>
       </div>
       <br />

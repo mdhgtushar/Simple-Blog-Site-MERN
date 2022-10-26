@@ -1,28 +1,28 @@
-import Home from "./Home";
+import Home from "./client/Home";
 
 import { Routes, Route } from "react-router-dom";
-import Post from "./Post";
-import NotFound from "./NotFound";
+import Post from "./client/Post";
+import NotFound from "./client/NotFound";
 import Client from "./layout/Client";
 import Admin from "./layout/Admin";
-import { useEffect } from "react";
-import { getPostFromServer } from "./features/postSlice";
-import { useDispatch } from "react-redux";
+import Categories from "./client/Categories";
+import CreatePost from "./admin/CreatePost";
+import CreateCategory from "./admin/CreateCategory";
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getPostFromServer());
-  }, [dispatch]);
   return (
     <Routes>
       <Route path="/" element={<Client />}>
         <Route path="" element={<Home />} />
+        <Route path="/categories" element={<Categories />} />
         <Route path="post/:id" element={<Post />} />
         <Route path="*" element={<NotFound />} />
       </Route>
       <Route path="/admin" element={<Admin />}>
-        <Route path="" element={"<Home />"} />
+        <Route path="" element={"dashboared"} />
+        <Route path="create-post" element={<CreatePost />} />
+        <Route path="create-category" element={<CreateCategory />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );

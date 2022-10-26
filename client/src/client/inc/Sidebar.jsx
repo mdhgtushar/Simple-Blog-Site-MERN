@@ -1,12 +1,27 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ApiReq from "../../api/ApiReq";
 import Post from "../components/Post";
-import { getAllPost } from "../features/postSlice";
 
 const Sidebar = () => {
-  const categories = useSelector((state) => state.category.categories);
-  const posts = useSelector(getAllPost);
+  const [categories, setCategories] = useState([]);
+
+  const getCategories = async () => {
+    const data = await ApiReq.get("category");
+    setCategories(data.data);
+  };
+
+  const [posts, setPosts] = useState([]);
+
+  const getPosts = async () => {
+    const data = await ApiReq.get("posts/featured");
+    setPosts(data.data);
+  };
+  useEffect(() => {
+    getPosts();
+    getCategories();
+  }, []);
+
   return (
     <div class="col-lg-4">
       <form class="mb-2">
@@ -48,7 +63,9 @@ const Sidebar = () => {
               class="list-group-item d-flex justify-content-between align-items-center"
               key={key}
             >
-              <Link to={`/category/${category.name}`}>{category.name} </Link>
+              <Link to={`/category/${category.category_name}`}>
+                {category.category_name}{" "}
+              </Link>
               <span class="badge bg-primary rounded-pill">
                 {category.numberOfPosts}
               </span>

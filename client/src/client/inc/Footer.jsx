@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -6,11 +7,11 @@ const Footer = () => {
       <div class="container ">
         <div class="row">
           <div class="col-lg-3 mt-3">
-            <h4 class="text-muted">TrickBD</h4>
+            <h4 class="text-muted">হোবায়ের ব্লগ</h4>
             <div>
-              <a href="" class="text-decoration-none text-muted">
-                Mail
-              </a>
+              <Link to="/admin" class="text-decoration-none text-muted">
+                Admin Panel
+              </Link>
               <br />
               <a href="" class="text-decoration-none text-muted">
                 Me
@@ -18,7 +19,7 @@ const Footer = () => {
             </div>
           </div>
           <div class="col-lg-3 mt-3">
-            <h4 class="text-muted">Other TrickBD Sites </h4>
+            <h4 class="text-muted">আমার অন্যান্য সাইট</h4>
             <div>
               <a href="" class="text-decoration-none text-muted">
                 Advertise
@@ -34,7 +35,7 @@ const Footer = () => {
             </div>
           </div>
           <div class="col-lg-3 mt-3">
-            <h4 class="text-muted">Our Company </h4>
+            <h4 class="text-muted">সোসিয়াল মিডিয়া</h4>
             <div>
               <a href="" class="text-decoration-none text-muted">
                 Publisher

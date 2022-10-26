@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 const Post = ({ post }) => {
   return (
     <div class="card mb-3">
-      <Link to={`/post/${post.id}`}>
+      <Link to={`/post/${post._id}`}>
         <div class="row g-0">
           <div class="col-md-4">
             <div>
               <img
                 style={{ width: "100%", height: "120px", objectFit: "cover" }}
-                src={post.image}
+                src={`http://localhost:5000/controllers/uploads/posts/${post.image}`}
                 class="card-img-top"
                 alt="post"
               />

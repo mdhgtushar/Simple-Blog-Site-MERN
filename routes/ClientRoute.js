@@ -6,6 +6,7 @@ const ClientRoute = express.Router();
 
 //posts routes
 ClientRoute.get("/posts", PostController.get_all_posts);
+ClientRoute.get("/posts/post", PostController.get_single_post);
 ClientRoute.get("/posts/featured", PostController.get_featured_posts);
 ClientRoute.post("/posts", PostController.create_post);
 ClientRoute.patch("/posts", PostController.update_post);

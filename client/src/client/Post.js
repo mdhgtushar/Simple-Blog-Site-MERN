@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getAllPost } from "./features/postSlice";
+
+import ApiReq from "../api/ApiReq";
 
 const Post = () => {
-  const posts = useSelector(getAllPost);
-  const params = useParams();
   const [post, setPost] = useState([]);
-
+  const params = useParams();
+  const getSinglePost = async () => {
+    const data = await ApiReq.get("/posts/post", {
+      params: {
+        id: params.id,
+      },
+    });
+    setPost(data.data);
+  };
   useEffect(() => {
-    setPost(posts[params.id - 1]);
-  }, [params.id, posts]);
-  console.log(params.id);
+    getSinglePost();
+  }, [params.id, getSinglePost]);
+
   return (
     <div class="col-lg-8">
       <div class="card mb-2">
@@ -20,7 +26,11 @@ const Post = () => {
         </div>
         <div class="card-body">
           <h5 class="card-title">
-            <img src={post.image} class="w-100" alt={post.title} />
+            <img
+              src={`http://localhost:5000/controllers/uploads/posts/${post.image}`}
+              class="w-100"
+              alt={post.title}
+            />
           </h5>
           <div>{post.description}</div>
         </div>

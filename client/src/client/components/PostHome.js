@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 const PostHome = ({ post }) => {
   return (
     <Link
-      to={`/post/${post.id}`}
+      to={`/post/${post._id}`}
       class="card mb-3 text-decoration-none text-muted"
     >
       <div class="row g-0">
         <div class="col-md-4">
           <img
             style={{ width: "100%", height: "120px", objectFit: "cover" }}
-            src={post.image}
+            src={`http://localhost:5000/controllers/uploads/posts/${post.image}`}
             class="card-img-top"
             alt="post"
           />
