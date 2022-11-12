@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import ApiReq from "../api/ApiReq";
 
 const Categories = () => {
@@ -13,23 +14,30 @@ const Categories = () => {
     getCategories();
   }, []);
   return (
-    <div class="col-lg-8">
-      Categories
-      {categories.map((category) => {
-        return (
-          <div class="card" style={{ width: "12rem" }}>
-            <img
-              src={`http://localhost:5000/controllers/uploads/${category.image}`}
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">{category.category_name}</h5>
+    <div className="col-lg-8">
+      <br />
+      <h4 className="text-muted card card-body">Cateogries List</h4>
+      <br />
+      <div className="row">
+        {categories.map((category) => {
+          return (
+            <div className="col-md-4" key={category._id}>
+              <Link to={`/category/${category.category_name}`}>
+                <div className="card">
+                  <img
+                    src={`http://localhost:5000/controllers/uploads/${category.image}`}
+                    className="card-img-top"
+                    alt="..."
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title">{category.category_name}</h5>
+                  </div>
+                </div>
+              </Link>
             </div>
-          </div>
-        );
-      })}
-    </div>
+          );
+        })}
+      </div></div>
   );
 };
 

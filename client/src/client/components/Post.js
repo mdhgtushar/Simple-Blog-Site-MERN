@@ -3,31 +3,33 @@ import { Link } from "react-router-dom";
 
 const Post = ({ post }) => {
   return (
-    <div class="card mb-3">
+    <div className="card mb-3 overflow-hidden">
       <Link to={`/post/${post._id}`}>
-        <div class="row g-0">
-          <div class="col-md-4">
+        <div className="row g-0">
+          <div className="col-md-4 p-0"
+            style={{ height: "60px", }}>
             <div>
               <img
-                style={{ width: "100%", height: "120px", objectFit: "cover" }}
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 src={`http://localhost:5000/controllers/uploads/posts/${post.image}`}
-                class="card-img-top"
+                className="card-img-top"
                 alt="post"
               />
             </div>
           </div>
-          <div class="col-md-8">
-            <div class="card-body">
+          <div className="col-md-8">
+            <div className=" py-3">
               <h5
-                class="card-tittle d-inline-block "
+                className="card-tittle"
                 style={{ fontSize: "15px" }}
               >
                 {post.title}
               </h5>
+
               {post.categories.map((category) => {
                 return (
                   <div
-                    class="badge bg-primary text-wrap"
+                    className="badge bg-primary text-wrap"
                     style={{ marginRight: "5px" }}
                     key={category}
                   >
@@ -35,7 +37,7 @@ const Post = ({ post }) => {
                   </div>
                 );
               })}
-              <small class="text-muted"> 3 mins ago</small>
+              <small className="text-muted"> 3 mins ago</small>
             </div>
           </div>
         </div>

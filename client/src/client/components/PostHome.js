@@ -4,22 +4,22 @@ const PostHome = ({ post }) => {
   return (
     <Link
       to={`/post/${post._id}`}
-      class="card mb-3 text-decoration-none text-muted"
+      className="card mb-3 text-decoration-none text-muted overflow-hidden"
     >
-      <div class="row g-0">
-        <div class="col-md-4">
+      <div className="row">
+        <div className="col-md-4 p-0" style={{ height: "120px" }}>
           <img
-            style={{ width: "100%", height: "120px", objectFit: "cover" }}
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
             src={`http://localhost:5000/controllers/uploads/posts/${post.image}`}
-            class="card-img-top"
+            className="card-img-top"
             alt="post"
           />
         </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">{post.title}</h5>
+        <div className="col-md-8">
+          <div className="py-3">
+            <h5 className="card-title">{post.title}</h5>
             <span
-              class="d-inline-block text-truncate col-12"
+              className="d-inline-block text-truncate col-12 p-0"
               style={{ fontSize: "12px" }}
             >
               {post.description}
@@ -27,7 +27,7 @@ const PostHome = ({ post }) => {
             {post.categories.map((category) => {
               return (
                 <div
-                  class="badge bg-primary text-wrap"
+                  className="badge bg-primary text-wrap"
                   style={{ marginRight: "5px" }}
                   key={category}
                 >
@@ -35,7 +35,7 @@ const PostHome = ({ post }) => {
                 </div>
               );
             })}
-            <small class="text-muted"> 3 mins ago</small>
+            <small className="text-muted"> 3 mins ago</small>
           </div>
         </div>
       </div>

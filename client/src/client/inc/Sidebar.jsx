@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ApiReq from "../../api/ApiReq";
 import Post from "../components/Post";
+import { useTranslation } from "react-i18next";
 
 const Sidebar = () => {
+  const { t } = useTranslation();
   const [categories, setCategories] = useState([]);
 
   const getCategories = async () => {
@@ -23,56 +25,62 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <div class="col-lg-4">
-      <form class="mb-2">
-        <input
-          class="form-control"
-          list="datalistOptions"
-          id="exampleDataList"
-          placeholder="Type to search..."
-        />
-        <datalist id="datalistOptions">
-          <option value="San Francisco" />
-          <option value="New York" />
-          <option value="Seattle" />
-          <option value="Los Angeles" />
-          <option value="Chicago" />
-        </datalist>
-      </form>
+    <div className="col-lg-4">
+      <div className="card">
+        <div className="card-body">
+          <p className="lead">{t("admin")}</p>
+          <hr className="my-4" />
+          <p>{t("description")}</p>
+          <p className="lead">
+            <button
+              type="button"
+              className="btn btn-primary"
+              data-toggle="modal"
+              data-target="#exampleModalCenter"
+            >
+              Watch Video
+            </button>
+          </p>
+        </div>
+      </div>
+      <br />
+
       <li
         type="button"
-        class="list-group-item list-group-item-action active"
+        className="list-group-item list-group-item-action active"
         aria-current="true"
       >
-        ফিচার্ড পোস্ট
+        {t("titles.1")}
       </li>
       {posts.map((post, key) => {
         return <Post post={post} key={post.id} />;
       })}
-      <ul class="list-group mb-2">
+      <ul className="list-group mb-2">
         <li
           type="button"
-          class="list-group-item list-group-item-action active"
+          className="list-group-item list-group-item-action active"
           aria-current="true"
         >
-          ক্যাটাগরি
+          {t("titles.2")}
         </li>
         {categories.map((category, key) => {
           return (
             <li
-              class="list-group-item d-flex justify-content-between align-items-center"
+              className="list-group-item d-flex justify-content-between align-items-center"
               key={key}
             >
               <Link to={`/category/${category.category_name}`}>
                 {category.category_name}{" "}
               </Link>
-              <span class="badge bg-primary rounded-pill">
+              <span className="badge bg-primary rounded-pill">
                 {category.numberOfPosts}
               </span>
             </li>
           );
         })}
       </ul>
+      <br />
+      <p className="color-gray">all &copycopyright reserved</p>
     </div>
   );
 };

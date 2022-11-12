@@ -1,0 +1,14 @@
+{
+    "admin": "Hobayer Golondaz Tushar",
+    "description": "To know more please watch the video below",
+    "logoText": "Hobayer Blog",
+    "menu": {
+        "1": "Home",
+        "2": "Categories",
+        "3": "View All"
+    },
+    "titles": {
+        "1": "Featured Post",
+        "2": "Categories"
+    }
+}
