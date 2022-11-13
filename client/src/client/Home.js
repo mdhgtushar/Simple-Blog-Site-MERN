@@ -54,7 +54,7 @@ const Home = () => {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLongTitle">
-                Modal title
+                {t("admin")}
               </h5>
               <button
                 type="button"
